@@ -1,0 +1,20 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 1.2.0)'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    uses: CodingWithCalvin/.github/.github/workflows/gha-publish.yml@main
+    with:
+      version: ${{ inputs.version }}
+      action-name: 'JetBrains Marketplace Publisher'
+      action-slug: 'jetbrains-marketplace-publisher'
+      action-description:
+        'Publish your JetBrains plugins to the marketplace with ease!'
+    secrets: inherit
